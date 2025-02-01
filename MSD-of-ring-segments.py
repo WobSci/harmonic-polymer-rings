@@ -40,32 +40,34 @@ fig.update_yaxes(type="log")
 # Calculate characteristic time points
 RMS_ROG = R*b/np.pi * (np.arctan(np.pi*R/b)-np.arctan(2/N*np.pi*R/b))
 print(RMS_ROG)
-limit1 = 4*np.pi**2*RMS_ROG**2/b**4
-limit2 = 6*np.pi**2*RMS_ROG*N/b**2
-t_char = np.array([1, limit1, limit2])
+t_char0 = 1
+t_char1 = 4*np.pi**2*RMS_ROG**2/b**4
+t_char2 = 6*np.pi**2*RMS_ROG*N/b**2
+t_char = np.array([t_char0, t_char1, t_char2])
 
-MSD_char = []
-for i in t_char:
-    temp = A*i + 4*np.sum(B*(1-np.e**(-C*i)))
-    MSD_char.append(temp)
+MSD_tchar0 = A*t_char[0] + 4*np.sum(B*(1-np.e**(-C*t_char[0])))
+MSD_tchar1 = A*t_char[1] + 4*np.sum(B*(1-np.e**(-C*t_char[1])))
+MSD_tchar2 = A*t_char[2] + 4*np.sum(B*(1-np.e**(-C*t_char[2])))
 
 # Add limits to plot
-fig.add_trace(go.Scatter(x=t_char, y=MSD_char, mode='markers', name='characteristic times', marker=dict(color='red', symbol='diamond', size=10)))
+fig.add_trace(go.Scatter(x=[t_char0], y=[MSD_tchar0], mode='markers', name=r'$\frac{t}{\tau_s}=1$', marker=dict(color='red', symbol='square', size=10)))
+fig.add_trace(go.Scatter(x=[t_char1], y=[MSD_tchar1], mode='markers', name=r'$\frac{t}{\tau_s}=4\pi^2\frac{\left\langle R_g^2\right\rangle_{eq}^2}{b^4}$', marker=dict(color='red', symbol='circle', size=10)))
+fig.add_trace(go.Scatter(x=[t_char2], y=[MSD_tchar2], mode='markers', name=r'$\frac{t}{\tau_s}=6\pi^2\frac{\left\langle R_g^2\right\rangle_{eq}N}{b^2}$', marker=dict(color='red', symbol='diamond', size=10)))
 
 # Calculate approximations between characteristic times
-t_regime1 = np.logspace(0,np.log10(limit1),10)
+t_regime1 = np.logspace(0,np.log10(t_char1),10)
 MSD_regime1 = []
 for i in t_regime1:
     temp = 2*b**2/np.pi**(3/2)*i**(1/2)
     MSD_regime1.append(temp)
 
-t_regime2 = np.logspace(np.log10(limit1),np.log10(limit2),10)
+t_regime2 = np.logspace(np.log10(t_char1),np.log10(t_char2),10)
 MSD_regime2 = []
 for i in t_regime2:
     temp = 2*RMS_ROG
     MSD_regime2.append(temp)
 
-t_regime3 = np.logspace(np.log10(limit2),np.log10(np.max(t_norm)),10)
+t_regime3 = np.logspace(np.log10(t_char2),np.log10(np.max(t_norm)),10)
 MSD_regime3 = []
 for i in t_regime3:
     temp = 6/(3*np.pi**2) * b**2/N * i
