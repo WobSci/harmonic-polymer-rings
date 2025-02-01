@@ -37,3 +37,11 @@ fig.update_layout(
 fig.update_xaxes(type="log")
 fig.update_yaxes(type="log")
 fig.show()
+
+# Calculate characteristic time points
+RMS = R*b/np.pi * (np.arctan(np.pi*R/b)-np.arctan(2/N*np.pi*R/b))
+print(RMS)
+limit1 = 4*np.pi**2*RMS**2/b**4
+limit2 = 6*np.pi**2*RMS*N/b**2
+print(limit1)
+print(limit2)
