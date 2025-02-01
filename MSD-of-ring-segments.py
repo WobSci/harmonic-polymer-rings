@@ -15,7 +15,7 @@ print(p)
 # Calculate MSD for t_norm values
 A = 6/(3*np.pi**2) * b**2/N # MSD of center of mass
 B = ((4*np.pi**2*p**2)/(N*b**2)+N/R**2)**(-1)
-C = (2*p/N)**2 + 1/np.pi**2 * b**2/R**2
+C = (2*p/N)**2 + (b/(np.pi*R))**2
 
 MSD = []
 for i in t_norm:
@@ -26,10 +26,10 @@ MSD = np.array(MSD)
 
 # Plot MSD vs t_norm
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=t_norm, y=MSD, mode='markers+lines'))
+fig.add_trace(go.Scatter(x=t_norm, y=MSD, mode='markers+lines', name=r'$\frac{6}{3\pi^2}\frac{b^2}{N}\frac{t}{\tau_s}+4\sum\limits_{p=1}^{N/2}\left[\left(\frac{4\pi^2p^2}{Nb^2}+\frac{N}{R^2}\right)^{-1}\left(1-e^{-\left(\left(\frac{2p}{N}\right)^2+\left(\frac{b}{\pi R}\right)^2\right)\frac{t}{\tau_s}}\right)\right]$'))
 fig.update_layout(
-    title='MSD of ring segments',
-    xaxis_title='t/tau_s',
+    title=f"b = {b*10**9} nm, R = {R*10**9} nm, N = {N}",
+    xaxis_title=r'$t/\tau_s$',
     yaxis_title='MSD',
     xaxis=dict(tickformat='.0e'),
     yaxis=dict(tickformat='.0e')
@@ -50,7 +50,7 @@ for i in t_char:
     MSD_char.append(temp)
 
 # Add limits to plot
-fig.add_trace(go.Scatter(x=t_char, y=MSD_char, mode='markers', marker=dict(color='red', symbol='diamond', size=10)))
+fig.add_trace(go.Scatter(x=t_char, y=MSD_char, mode='markers', name='characteristic times', marker=dict(color='red', symbol='diamond', size=10)))
 
 # Calculate approximations between characteristic times
 t_regime1 = np.logspace(0,np.log10(limit1),10)
