@@ -55,26 +55,26 @@ fig.add_trace(go.Scatter(x=[t_char1], y=[MSD_tchar1], mode='markers', name=r'$\f
 fig.add_trace(go.Scatter(x=[t_char2], y=[MSD_tchar2], mode='markers', name=r'$\frac{t}{\tau_s}=6\pi^2\frac{\left\langle R_g^2\right\rangle_{eq}N}{b^2}$', marker=dict(color='red', symbol='diamond', size=10)))
 
 # Calculate approximations between characteristic times
-t_regime1 = np.logspace(0,np.log10(t_char1),10)
+t_regime0 = np.logspace(0,np.log10(t_char1),10)
+MSD_regime0 = []
+for i in t_regime0:
+    temp = 2*b**2/np.pi**(3/2)*i**(1/2)
+    MSD_regime0.append(temp)
+
+t_regime1 = np.logspace(np.log10(t_char1),np.log10(t_char2),10)
 MSD_regime1 = []
 for i in t_regime1:
-    temp = 2*b**2/np.pi**(3/2)*i**(1/2)
+    temp = 2*RMS_ROG
     MSD_regime1.append(temp)
 
-t_regime2 = np.logspace(np.log10(t_char1),np.log10(t_char2),10)
+t_regime2 = np.logspace(np.log10(t_char2),np.log10(np.max(t_norm)),10)
 MSD_regime2 = []
 for i in t_regime2:
-    temp = 2*RMS_ROG
+    temp = 6/(3*np.pi**2) * b**2/N * i
     MSD_regime2.append(temp)
 
-t_regime3 = np.logspace(np.log10(t_char2),np.log10(np.max(t_norm)),10)
-MSD_regime3 = []
-for i in t_regime3:
-    temp = 6/(3*np.pi**2) * b**2/N * i
-    MSD_regime3.append(temp)
-
 # Add approximations to plot
-fig.add_trace(go.Scatter(x=t_regime1, y=MSD_regime1, mode='lines', name='Approx. 1', line=dict(color='green', width=2)))
-fig.add_trace(go.Scatter(x=t_regime2, y=MSD_regime2, mode='lines', name='Approx. 2', line=dict(color='green', width=2)))
-fig.add_trace(go.Scatter(x=t_regime3, y=MSD_regime3, mode='lines', name='Approx. 3', line=dict(color='green', width=2)))
+fig.add_trace(go.Scatter(x=t_regime0, y=MSD_regime0, mode='lines', name=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)\right\rangle\approx \frac{2b^2}{\pi^{3/2}}\left(\frac{t}{\tau_s}\right)^{1/2}$', line=dict(dash='dot', color='green', width=2)))
+fig.add_trace(go.Scatter(x=t_regime1, y=MSD_regime1, mode='lines', name=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)\right\rangle\approx 2\left\langle R_g^2\right\rangle_{eq}$', line=dict(dash='dash', color='green', width=2)))
+fig.add_trace(go.Scatter(x=t_regime2, y=MSD_regime2, mode='lines', name=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)\right\rangle\approx \frac{6}{3\pi^2}\frac{b^2}{N}\frac{t}{\tau_s}$', line=dict(dash='solid', color='green', width=2)))
 fig.show()
