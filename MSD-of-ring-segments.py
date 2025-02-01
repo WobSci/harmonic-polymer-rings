@@ -8,7 +8,7 @@ N = 100
 R = 1*10**(-9)
 
 # Definitions of Arrays
-t_norm = np.logspace(1, 14, num=100)
+t_norm = np.logspace(0, 14, num=100)
 p = np.linspace(1, np.floor(N/2), int(np.floor(N/2)))
 print(p)
 
@@ -38,13 +38,17 @@ fig.update_xaxes(type="log")
 fig.update_yaxes(type="log")
 
 # Calculate characteristic time points
-RMS = R*b/np.pi * (np.arctan(np.pi*R/b)-np.arctan(2/N*np.pi*R/b))
-print(RMS)
-limit1 = 4*np.pi**2*RMS**2/b**4
-limit2 = 6*np.pi**2*RMS*N/b**2
+RMS_ROG = R*b/np.pi * (np.arctan(np.pi*R/b)-np.arctan(2/N*np.pi*R/b))
+print(RMS_ROG)
+limit1 = 4*np.pi**2*RMS_ROG**2/b**4
+limit2 = 6*np.pi**2*RMS_ROG*N/b**2
+t_char = np.array([1, limit1, limit2])
+
+MSD_char = []
+for i in t_char:
+    temp = A*i + 4*np.sum(B*(1-np.e**(-C*i)))
+    MSD_char.append(temp)
 
 # Add limits to plot
-fig.add_vline(x=1, line_width=3, line_dash="dash", line_color="red")
-fig.add_vline(x=limit1, line_width=3, line_dash="dash", line_color="red")
-fig.add_vline(x=limit2, line_width=3, line_dash="dash", line_color="red")
+fig.add_trace(go.Scatter(x=t_char, y=MSD_char, mode='markers', marker=dict(color='red', symbol='diamond', size=10)))
 fig.show()
