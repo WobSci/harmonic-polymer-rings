@@ -3,12 +3,12 @@ import pandas as pd
 import plotly.graph_objects as go
 
 # Definitions of Scalars
-b = 1
+b = 11*10**(-10)
 N = 100
-R = 1
+R = 1*10**(-9)
 
 # Definitions of Arrays
-t_norm = np.logspace(1, 12, num=100)
+t_norm = np.logspace(1, 14, num=100)
 p = np.linspace(1, np.floor(N/2), int(np.floor(N/2)))
 print(p)
 
@@ -30,7 +30,9 @@ fig.add_trace(go.Scatter(x=t_norm, y=MSD, mode='markers+lines'))
 fig.update_layout(
     title='MSD of ring segments',
     xaxis_title='t/tau_s',
-    yaxis_title='MSD'
+    yaxis_title='MSD',
+    xaxis=dict(tickformat='.0e'),
+    yaxis=dict(tickformat='.0e')
 )
 fig.update_xaxes(type="log")
 fig.update_yaxes(type="log")
