@@ -13,7 +13,7 @@ p = np.linspace(1, np.floor(N/2), int(np.floor(N/2)))
 print(p)
 
 # Calculate MSD for t_norm values
-A = 6/(3*np.pi) * b**2/N # MSD of center of mass
+A = 6/(3*np.pi**2) * b**2/N # MSD of center of mass
 B = ((4*np.pi**2*p**2)/(N*b**2)+N/R**2)**(-1)
 C = (2*p/N)**2 + 1/np.pi**2 * b**2/R**2
 
@@ -52,3 +52,22 @@ for i in t_char:
 # Add limits to plot
 fig.add_trace(go.Scatter(x=t_char, y=MSD_char, mode='markers', marker=dict(color='red', symbol='diamond', size=10)))
 fig.show()
+
+# Calculate approximations for the different regimes
+t_regime1 = np.logspace(0,np.log10(limit1),10)
+MSD_regime1 = []
+for i in t_regime1:
+    temp = 2*b**2/np.pi**(3/2)*i**(1/2)
+    MSD_regime1.append(temp)
+
+t_regime2 = np.logspace(np.log10(limit1),np.log10(limit2),10)
+MSD_regime2 = []
+for i in t_regime2:
+    temp = 2*RMS_ROG
+    MSD_regime2.append(temp)
+
+t_regime3 = np.logspace(np.log10(limit2),np.log10(np.max(t_norm)),10)
+MSD_regime3 = []
+for i in t_regime3:
+    temp = 6/(3*np.pi**2) * b**2/N * i
+    MSD_regime3.append(temp)
