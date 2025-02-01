@@ -51,9 +51,8 @@ for i in t_char:
 
 # Add limits to plot
 fig.add_trace(go.Scatter(x=t_char, y=MSD_char, mode='markers', marker=dict(color='red', symbol='diamond', size=10)))
-fig.show()
 
-# Calculate approximations for the different regimes
+# Calculate approximations between characteristic times
 t_regime1 = np.logspace(0,np.log10(limit1),10)
 MSD_regime1 = []
 for i in t_regime1:
@@ -71,3 +70,9 @@ MSD_regime3 = []
 for i in t_regime3:
     temp = 6/(3*np.pi**2) * b**2/N * i
     MSD_regime3.append(temp)
+
+# Add approximations to plot
+fig.add_trace(go.Scatter(x=t_regime1, y=MSD_regime1, mode='lines', name='Approx. 1', line=dict(color='green', width=2)))
+fig.add_trace(go.Scatter(x=t_regime2, y=MSD_regime2, mode='lines', name='Approx. 2', line=dict(color='green', width=2)))
+fig.add_trace(go.Scatter(x=t_regime3, y=MSD_regime3, mode='lines', name='Approx. 3', line=dict(color='green', width=2)))
+fig.show()
