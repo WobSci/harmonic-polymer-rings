@@ -101,8 +101,8 @@ fig.update_layout(
     title=fr'$\tilde{{R}} = {factor:.3g} \frac{{b}}{{\pi}}, N = {N}$',
     xaxis_title=r'$t/\tau_s$',
     yaxis_title=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle \Big/ b^2$',
-    xaxis=dict(tickformat='.0e'),
-    yaxis=dict(tickformat='.0e'),
+    xaxis=dict(tickformat='.0e', title_font=dict(size=20)),
+    yaxis=dict(tickformat='.0e', title_font=dict(size=20)),
     legend_font_size=16,
     title_font_size=20
 )
