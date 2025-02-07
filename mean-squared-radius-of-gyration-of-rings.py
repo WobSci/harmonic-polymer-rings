@@ -3,7 +3,7 @@ import plotly.graph_objects as go
 
 # Definitions of Scalars
 b = 1 # no influence due to normalization of MSROG by b^2
-N = 10
+N = 100
 
 xlog_start = -1
 xlog_end = 4
@@ -80,6 +80,6 @@ fig.update_layout(
 fig.show()
 
 ## Export
-export = np.column_stack((X, MSROG_sum_norm))
-header = "piR/b,R_g^2/b^2"
+export = np.column_stack((X, MSROG_sum_norm, MSROG_arctan_norm))
+header = "piR/b,R_g^2/b^2 (sum), R_g^2/b^2 (arctan)"
 np.savetxt('export.csv', export, fmt='%.2e', delimiter=',', header=header, comments='')
