@@ -25,10 +25,19 @@ MSROG_arctan = np.array(MSROG_arctan)
 MSROG_sum_norm = MSROG_sum * (np.pi/b)**2
 MSROG_arctan_norm = MSROG_arctan * (np.pi/b)**2
 
+# Calculation of characteristic values of piR/b
+char1 = 1
+char2 = N/2
+
+#MSROG_char1 = 2*np.sum(((4*np.pi**2*p**2)/(N*b**2)+N/(char1*b/np.pi)**2)**(-1))
+#MSROG_char2 = 2*np.sum(((4*np.pi**2*p**2)/(N*b**2)+N/(char2*b/np.pi)**2)**(-1))
+
 # Plot MSROG vs R=X*b/pi
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=X, y=MSROG_sum_norm, mode='markers+lines', name='sum'))
 fig.add_trace(go.Scatter(x=X, y=MSROG_arctan_norm, mode='lines', name='arctan', line=dict(dash='solid', color='green', width=2)))
+fig.add_vline(x=char1, line_width=3, line_color="red")
+fig.add_vline(x=char2, line_width=3, line_color="red")
 fig.update_xaxes(type="log")
 fig.update_yaxes(type="log")
 fig.update_layout(
