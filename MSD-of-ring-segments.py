@@ -4,9 +4,10 @@ import plotly.graph_objects as go
 
 ## Definitions
 # Scalars
-b = 11*10**(-10)
+b = 1 # no influence due to normalization of MSD by b^2
 N = 5000
-R = 10*b/np.pi
+factor = 10
+R = factor*b/np.pi
 
 # Arrays
 t_norm = np.logspace(-1, 8, num=100) # t_norm = t/tau_s
@@ -97,7 +98,7 @@ fig.add_annotation(
 
 # Plot Properties
 fig.update_layout(
-    title=fr'$b = {b*10**9:.2g} \text{{ nm, }} \tilde{{R}} = {R*10**9:.2g} \text{{ nm, }} N = {N}$',
+    title=fr'$\tilde{{R}} = {factor:.2g} \frac{{b}}{{\pi}}, N = {N}$',
     xaxis_title=r'$t/\tau_s$',
     yaxis_title=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle \Big/ b^2$',
     xaxis=dict(tickformat='.0e'),
