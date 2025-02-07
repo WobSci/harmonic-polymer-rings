@@ -24,7 +24,7 @@ for i in t_norm:
     MSD.append(temp)
 
 # mean square radius of gyration (MSROG)
-MSROG = R*b/np.pi * (np.arctan(np.pi*R/b)-np.arctan(2/N*np.pi*R/b))
+MSROG = 2*np.sum(((4*np.pi**2*p**2)/(N*b**2)+N/(R)**2)**(-1))
 
 # characteristic times and corresponding MSD
 t_char0 = 1
@@ -63,6 +63,7 @@ MSD_regime1 = np.array(MSD_regime1)
 MSD_regime2 = np.array(MSD_regime2)
 
 # Normalization
+MSROG_norm = MSROG/b**2
 MSD_norm = MSD/b**2
 MSD_norm_tchar0 = MSD_tchar0/b**2
 MSD_norm_tchar1 = MSD_tchar1/b**2
@@ -76,7 +77,7 @@ MSD_norm_regime2 = MSD_regime2/b**2
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=t_norm, y=MSD_norm, mode='markers+lines', name=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle = \frac{6}{3\pi^2}\frac{b^2}{N}\frac{t}{\tau_s}+4\sum\limits_{p=1}^{N/2}\left[\left(\frac{4\pi^2p^2}{Nb^2}+\frac{N}{\tilde{R}^2}\right)^{-1}\left(1-e^{-\left(\left(\frac{2p}{N}\right)^2+\left(\frac{b}{\pi \tilde{R}}\right)^2\right)\frac{t}{\tau_s}}\right)\right]$'))
 
-# Limits
+# limits
 fig.add_trace(go.Scatter(x=[t_char0], y=[MSD_norm_tchar0], mode='markers', name=r'$\frac{t}{\tau_s}=1$', marker=dict(color='red', symbol='square', size=10)))
 fig.add_trace(go.Scatter(x=[t_char1], y=[MSD_norm_tchar1], mode='markers', name=r'$\frac{t}{\tau_s}=4\pi^2\frac{\left\langle R_g^2\right\rangle_{eq}^2}{b^4}$', marker=dict(color='red', symbol='circle', size=10)))
 fig.add_trace(go.Scatter(x=[t_char2], y=[MSD_norm_tchar2], mode='markers', name=r'$\frac{t}{\tau_s}=\pi^2\frac{\left\langle R_g^2\right\rangle_{eq}N}{b^2}$', marker=dict(color='red', symbol='diamond', size=10)))
@@ -86,10 +87,10 @@ fig.add_trace(go.Scatter(x=t_regime0, y=MSD_norm_regime0, mode='lines', name=r'$
 fig.add_trace(go.Scatter(x=t_regime1, y=MSD_norm_regime1, mode='lines', name=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle\approx 2\left\langle R_g^2\right\rangle_{eq}$', line=dict(dash='dash', color='green', width=2)))
 fig.add_trace(go.Scatter(x=t_regime2, y=MSD_norm_regime2, mode='lines', name=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle\approx \frac{6}{3\pi^2}\frac{b^2}{N}\frac{t}{\tau_s}$', line=dict(dash='solid', color='green', width=2)))
 
-# Additional Information
+# value of MSROG
 fig.add_annotation(
-    x=np.log10(np.median(t_norm)), y=np.log10(0.75*np.max(MSD/b**2)),
-    text=fr'$\left\langle R_g^2\right\rangle_{{eq}}=\frac{{\tilde{{R}}b}}{{\pi}}\left(\arctan\left(\frac{{\pi\tilde{{R}}}}{{b}}\right)-\arctan\left(\frac{{2\pi\tilde{{R}}}}{{Nb}}\right)\right)={MSROG:.3g} \text{{ nm}}^2$',
+    x=np.log10(np.median(t_norm)), y=np.log10(0.75*np.max(MSD_norm)),
+    text=fr'$\frac{{R_g^2}}{{b^2}}=\frac{{2}}{{b^2}}\sum\limits_{{p=1}}^{{N/2}}\left(\frac{{4\pi^2p^2}}{{Nb^2}}+\frac{{N}}{{\tilde{{R}}^2}}\right)^{{-1}}={MSROG_norm:.4g} $',
     showarrow=False,
     font=dict(size=20)
 )
