@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 # Definitions of Scalars
 b = 11*10**(-10)
 N = 5000
-R = 25*10**(-9)
+R = 10*b/np.pi
 
 # Definitions of Arrays
 t_norm = np.logspace(0, 8, num=100)
