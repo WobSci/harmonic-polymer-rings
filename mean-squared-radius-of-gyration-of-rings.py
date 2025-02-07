@@ -45,10 +45,10 @@ MSROG_regime0 = np.array(MSROG_regime0)
 MSROG_regime1 = np.array(MSROG_regime1)
 
 # Normalization
-MSROG_sum_norm = MSROG_sum * (np.pi/b)**2
-MSROG_arctan_norm = MSROG_arctan * (np.pi/b)**2
-MSROG_regime0_norm = MSROG_regime0 * (np.pi/b)**2
-MSROG_regime1_norm = MSROG_regime1 * (np.pi/b)**2
+MSROG_sum_norm = MSROG_sum / b**2
+MSROG_arctan_norm = MSROG_arctan / b**2
+MSROG_regime0_norm = MSROG_regime0 / b**2
+MSROG_regime1_norm = MSROG_regime1 / b**2
 
 # Plot MSROG vs R=X*b/pi
 fig = go.Figure()
@@ -64,14 +64,14 @@ fig.add_trace(go.Scatter(x=[None], y=[None], mode='lines',
                          line=dict(color="red", width=2, dash="solid"),
                          name=r'$\tilde{R}=\frac{Nb}{2\pi}$'))
 
-fig.add_trace(go.Scatter(x=regime0, y=MSROG_regime0_norm, mode='lines', name=r'$\left(\frac{\pi \tilde{R}}{b}\right)^2$', line=dict(dash='dash', color='green', width=2)))
-fig.add_trace(go.Scatter(x=regime1, y=MSROG_regime1_norm, mode='lines', name=r'$\frac{\pi}{2}\frac{\pi \tilde{R}}{b}$', line=dict(dash='solid', color='green', width=2)))
+fig.add_trace(go.Scatter(x=regime0, y=MSROG_regime0_norm, mode='lines', name=r'$\frac{\tilde{R}^2}{b^2}$', line=dict(dash='dash', color='green', width=2)))
+fig.add_trace(go.Scatter(x=regime1, y=MSROG_regime1_norm, mode='lines', name=r'$\frac{1}{2}\frac{\tilde{R}}{b}$', line=dict(dash='solid', color='green', width=2)))
 fig.update_xaxes(type="log")
 fig.update_yaxes(type="log")
 fig.update_layout(
     title=fr'$N = {N}$',
     xaxis_title=r'$\frac{\pi \tilde{R}}{b}$',
-    yaxis_title=r'$R_g^2\cdot\left(\frac{\pi}{b}\right)^2$',
+    yaxis_title=r'$R_g^2\Big/b^2$',
     xaxis=dict(tickformat='.0e'),
     yaxis=dict(tickformat='.0e'),
     legend_font_size=16,
