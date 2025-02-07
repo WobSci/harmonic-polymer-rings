@@ -78,3 +78,8 @@ fig.update_layout(
     title_font_size=20
 )
 fig.show()
+
+## Export
+export = np.column_stack((X, MSROG_sum_norm))
+header = "piR/b,R_g^2/b^2"
+np.savetxt('export.csv', export, fmt='%.2e', delimiter=',', header=header, comments='')
