@@ -9,7 +9,7 @@ N = 5000
 R = 10*b/np.pi
 
 # Arrays
-t_norm = np.logspace(-1, 8, num=100)
+t_norm = np.logspace(-1, 8, num=100) # t_norm = t/tau_s
 p = np.linspace(1, np.floor(N/2), int(np.floor(N/2)))
 
 ## Calculation
@@ -23,13 +23,13 @@ for i in t_norm:
     temp = A*i + 4*np.sum(B*(1-np.e**(-C*i)))
     MSD.append(temp)
 
-# mean square radius of gyration
-RMS_ROG = R*b/np.pi * (np.arctan(np.pi*R/b)-np.arctan(2/N*np.pi*R/b))
+# mean square radius of gyration (MSROG)
+MSROG = R*b/np.pi * (np.arctan(np.pi*R/b)-np.arctan(2/N*np.pi*R/b))
 
 # characteristic times and corresponding MSD
 t_char0 = 1
-t_char1 = 4*np.pi**2*RMS_ROG**2/b**4
-t_char2 = np.pi**2*RMS_ROG*N/b**2
+t_char1 = 4*np.pi**2*MSROG**2/b**4
+t_char2 = np.pi**2*MSROG*N/b**2
 t_char = np.array([t_char0, t_char1, t_char2])
 
 MSD_tchar0 = A*t_char[0] + 4*np.sum(B*(1-np.e**(-C*t_char[0])))
@@ -46,7 +46,7 @@ for i in t_regime0:
 t_regime1 = np.logspace(np.log10(t_char1),np.log10(t_char2),10)
 MSD_regime1 = []
 for i in t_regime1:
-    temp = 2*RMS_ROG
+    temp = 2*MSROG
     MSD_regime1.append(temp)
 
 t_regime2 = np.logspace(np.log10(t_char2),np.log10(np.max(t_norm)),10)
@@ -89,7 +89,7 @@ fig.add_trace(go.Scatter(x=t_regime2, y=MSD_norm_regime2, mode='lines', name=r'$
 # Additional Information
 fig.add_annotation(
     x=np.log10(np.median(t_norm)), y=np.log10(0.75*np.max(MSD/b**2)),
-    text=fr'$\left\langle R_g^2\right\rangle_{{eq}}=\frac{{\tilde{{R}}b}}{{\pi}}\left(\arctan\left(\frac{{\pi\tilde{{R}}}}{{b}}\right)-\arctan\left(\frac{{2\pi\tilde{{R}}}}{{Nb}}\right)\right)={RMS_ROG:.3g} \text{{ nm}}^2$',
+    text=fr'$\left\langle R_g^2\right\rangle_{{eq}}=\frac{{\tilde{{R}}b}}{{\pi}}\left(\arctan\left(\frac{{\pi\tilde{{R}}}}{{b}}\right)-\arctan\left(\frac{{2\pi\tilde{{R}}}}{{Nb}}\right)\right)={MSROG:.3g} \text{{ nm}}^2$',
     showarrow=False,
     font=dict(size=20)
 )
