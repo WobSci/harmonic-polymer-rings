@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 
 # Definitions of Scalars
 b = 11*10**(-10)
-N = 5000
+N = 500
 R = 10*b/np.pi
 
 # Definitions of Arrays
@@ -53,7 +53,7 @@ MSD_tchar2 = A*t_char[2] + 4*np.sum(B*(1-np.e**(-C*t_char[2])))
 # Add limits to plot
 fig.add_trace(go.Scatter(x=[t_char0], y=[MSD_tchar0], mode='markers', name=r'$\frac{t}{\tau_s}=1$', marker=dict(color='red', symbol='square', size=10)))
 fig.add_trace(go.Scatter(x=[t_char1], y=[MSD_tchar1], mode='markers', name=r'$\frac{t}{\tau_s}=4\pi^2\frac{\left\langle R_g^2\right\rangle_{eq}^2}{b^4}$', marker=dict(color='red', symbol='circle', size=10)))
-fig.add_trace(go.Scatter(x=[t_char2], y=[MSD_tchar2], mode='markers', name=r'$\frac{t}{\tau_s}=6\pi^2\frac{\left\langle R_g^2\right\rangle_{eq}N}{b^2}$', marker=dict(color='red', symbol='diamond', size=10)))
+fig.add_trace(go.Scatter(x=[t_char2], y=[MSD_tchar2], mode='markers', name=r'$\frac{t}{\tau_s}=\pi^2\frac{\left\langle R_g^2\right\rangle_{eq}N}{b^2}$', marker=dict(color='red', symbol='diamond', size=10)))
 
 # Calculate approximations between characteristic times
 t_regime0 = np.logspace(0,np.log10(t_char1),10)
