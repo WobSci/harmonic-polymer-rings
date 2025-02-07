@@ -80,12 +80,12 @@ fig.add_trace(go.Scatter(x=t_norm, y=MSD_norm, mode='markers+lines', name=r'$\le
 
 # limits
 fig.add_trace(go.Scatter(x=[t_char0], y=[MSD_norm_tchar0], mode='markers', name=r'$\frac{t}{\tau_s}=1$', marker=dict(color='red', symbol='square', size=10)))
-fig.add_trace(go.Scatter(x=[t_char1], y=[MSD_norm_tchar1], mode='markers', name=r'$\frac{t}{\tau_s}=4\pi^2\frac{\left\langle R_g^2\right\rangle_{eq}^2}{b^4}$', marker=dict(color='red', symbol='circle', size=10)))
-fig.add_trace(go.Scatter(x=[t_char2], y=[MSD_norm_tchar2], mode='markers', name=r'$\frac{t}{\tau_s}=\pi^2\frac{\left\langle R_g^2\right\rangle_{eq}N}{b^2}$', marker=dict(color='red', symbol='diamond', size=10)))
+fig.add_trace(go.Scatter(x=[t_char1], y=[MSD_norm_tchar1], mode='markers', name=r'$\frac{t}{\tau_s}=4\pi^2\frac{R_g^4}{b^4}$', marker=dict(color='red', symbol='circle', size=10)))
+fig.add_trace(go.Scatter(x=[t_char2], y=[MSD_norm_tchar2], mode='markers', name=r'$\frac{t}{\tau_s}=\pi^2\frac{R_g^2N}{b^2}$', marker=dict(color='red', symbol='diamond', size=10)))
 
 # Approximations
 fig.add_trace(go.Scatter(x=t_regime0, y=MSD_norm_regime0, mode='lines', name=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle\approx \frac{2b^2}{\pi^{3/2}}\left(\frac{t}{\tau_s}\right)^{1/2}$', line=dict(dash='dot', color='green', width=2)))
-fig.add_trace(go.Scatter(x=t_regime1, y=MSD_norm_regime1, mode='lines', name=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle\approx 2\left\langle R_g^2\right\rangle_{eq}$', line=dict(dash='dash', color='green', width=2)))
+fig.add_trace(go.Scatter(x=t_regime1, y=MSD_norm_regime1, mode='lines', name=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle\approx 2R_g^2$', line=dict(dash='dash', color='green', width=2)))
 fig.add_trace(go.Scatter(x=t_regime2, y=MSD_norm_regime2, mode='lines', name=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle\approx \frac{6}{3\pi^2}\frac{b^2}{N}\frac{t}{\tau_s}$', line=dict(dash='solid', color='green', width=2)))
 
 # value of MSROG
