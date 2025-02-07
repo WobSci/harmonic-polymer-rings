@@ -6,9 +6,12 @@ b = 100*10**(-10)
 N = 500
 #R = 10*b/np.pi
 
+xlog_start = -1
+xlog_end = 4
+
 # Definition of arrays
 p = np.linspace(1, np.floor(N/2), int(np.floor(N/2)))
-X = np.logspace(-1, 4, num=100)
+X = np.logspace(xlog_start, xlog_end, num=100)
 
 MSROG_sum = []
 MSROG_arctan = []
@@ -27,7 +30,7 @@ char1 = 1
 char2 = N/2
 
 # Calculation of approximations between characteristic values
-regime0 = np.logspace(-2,np.log10(char1),10)
+regime0 = np.logspace(xlog_start,np.log10(char1),10)
 MSROG_regime0 = []
 for i in regime0:
     temp = (i*b/np.pi)**2
@@ -54,7 +57,7 @@ fig.add_trace(go.Scatter(x=X, y=MSROG_sum_norm, mode='markers', name='sum'))
 fig.add_trace(go.Scatter(x=X, y=MSROG_arctan_norm, mode='lines', name='arctan', line=dict(dash='solid', color='blue', width=2)))
 fig.add_vline(x=char1, line_width=3, line_color="red")
 fig.add_vline(x=char2, line_width=3, line_color="red")
-fig.add_trace(go.Scatter(x=regime0, y=MSROG_regime0_norm, mode='lines', name=r'$R^2$', line=dict(dash='dash', color='green', width=2)))
+fig.add_trace(go.Scatter(x=regime0, y=MSROG_regime0_norm, mode='lines', name=r'$\frac{1}{2}Rb$', line=dict(dash='dash', color='green', width=2)))
 fig.add_trace(go.Scatter(x=regime1, y=MSROG_regime1_norm, mode='lines', name=r'$R^2$', line=dict(dash='solid', color='green', width=2)))
 fig.update_xaxes(type="log")
 fig.update_yaxes(type="log")
