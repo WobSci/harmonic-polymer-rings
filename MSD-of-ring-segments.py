@@ -43,7 +43,7 @@ RMS_ROG = R*b/np.pi * (np.arctan(np.pi*R/b)-np.arctan(2/N*np.pi*R/b))
 
 t_char0 = 1
 t_char1 = 4*np.pi**2*RMS_ROG**2/b**4
-t_char2 = 6*np.pi**2*RMS_ROG*N/b**2
+t_char2 = np.pi**2*RMS_ROG*N/b**2
 t_char = np.array([t_char0, t_char1, t_char2])
 
 MSD_tchar0 = A*t_char[0] + 4*np.sum(B*(1-np.e**(-C*t_char[0])))
