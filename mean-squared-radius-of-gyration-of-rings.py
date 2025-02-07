@@ -2,8 +2,8 @@ import numpy as np
 import plotly.graph_objects as go
 
 # Definitions of Scalars
-b = 1 # not relevant due to normalization
-N = 500
+b = 1 # no influence due to normalization of MSROG by b^2
+N = 10
 
 xlog_start = -1
 xlog_end = 4
