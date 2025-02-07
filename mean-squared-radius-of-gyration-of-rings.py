@@ -2,9 +2,8 @@ import numpy as np
 import plotly.graph_objects as go
 
 # Definitions of Scalars
-b = 100*10**(-10)
+b = 1 # not relevant due to normalization
 N = 500
-#R = 10*b/np.pi
 
 xlog_start = -1
 xlog_end = 4
