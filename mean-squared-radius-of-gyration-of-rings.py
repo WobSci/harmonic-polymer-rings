@@ -53,17 +53,25 @@ MSROG_regime1_norm = MSROG_regime1 * (np.pi/b)**2
 
 # Plot MSROG vs R=X*b/pi
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=X, y=MSROG_sum_norm, mode='markers', name='sum', marker=dict(color='blue')))
-fig.add_trace(go.Scatter(x=X, y=MSROG_arctan_norm, mode='lines', name='arctan', line=dict(dash='solid', color='blue', width=2)))
-fig.add_vline(x=char1, line_width=3, line_color="red")
+fig.add_trace(go.Scatter(x=X, y=MSROG_sum_norm, mode='markers', name=r'$2\sum\limits_{p=1}^{N/2}\left(\frac{4\pi^2p^2}{Nb^2}+\frac{N}{\tilde{R}^2}\right)^{-1}$', marker=dict(color='blue')))
+fig.add_trace(go.Scatter(x=X, y=MSROG_arctan_norm, mode='lines', name=r'$R_g^2=\frac{{\tilde{{R}}b}}{{\pi}}\left(\arctan\left(\frac{{\pi\tilde{{R}}}}{{b}}\right)-\arctan\left(\frac{{2\pi\tilde{{R}}}}{{Nb}}\right)\right)$', line=dict(dash='solid', color='blue', width=2)))
+
+fig.add_vline(x=char1, line_width=3, line_color="red", line=dict(dash='dash'))
+fig.add_trace(go.Scatter(x=[None], y=[None], mode='lines',
+                         line=dict(color="red", width=2, dash="dash"),
+                         name=r'$\tilde{R}=\frac{b}{\pi}$'))
 fig.add_vline(x=char2, line_width=3, line_color="red")
-fig.add_trace(go.Scatter(x=regime0, y=MSROG_regime0_norm, mode='lines', name=r'$\left(\frac{\pi R}{b}\right)^2$', line=dict(dash='dash', color='green', width=2)))
-fig.add_trace(go.Scatter(x=regime1, y=MSROG_regime1_norm, mode='lines', name=r'$\frac{\pi}{2}\frac{\pi R}{b}$', line=dict(dash='solid', color='green', width=2)))
+fig.add_trace(go.Scatter(x=[None], y=[None], mode='lines',
+                         line=dict(color="red", width=2, dash="solid"),
+                         name=r'$\tilde{R}=\frac{Nb}{2\pi}$'))
+
+fig.add_trace(go.Scatter(x=regime0, y=MSROG_regime0_norm, mode='lines', name=r'$\left(\frac{\pi \tilde{R}}{b}\right)^2$', line=dict(dash='dash', color='green', width=2)))
+fig.add_trace(go.Scatter(x=regime1, y=MSROG_regime1_norm, mode='lines', name=r'$\frac{\pi}{2}\frac{\pi \tilde{R}}{b}$', line=dict(dash='solid', color='green', width=2)))
 fig.update_xaxes(type="log")
 fig.update_yaxes(type="log")
 fig.update_layout(
-    title='MSROG vs. R',
-    xaxis_title=r'$\frac{\pi R}{b}$',
+    title=fr'$N = {N}$',
+    xaxis_title=r'$\frac{\pi \tilde{R}}{b}$',
     yaxis_title=r'$R_g^2\cdot\left(\frac{\pi}{b}\right)^2$',
     xaxis=dict(tickformat='.0e'),
     yaxis=dict(tickformat='.0e'),
