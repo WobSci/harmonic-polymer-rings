@@ -52,7 +52,7 @@ MSROG_regime1_norm = MSROG_regime1 / b**2
 
 # Plot MSROG vs R=X*b/pi
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=X, y=MSROG_sum_norm, mode='markers', name=r'$2\sum\limits_{p=1}^{N/2}\left(\frac{4\pi^2p^2}{Nb^2}+\frac{N}{\tilde{R}^2}\right)^{-1}$', marker=dict(color='blue')))
+fig.add_trace(go.Scatter(x=X, y=MSROG_sum_norm, mode='markers', name=r'$R_g^2=2\sum\limits_{p=1}^{N/2}\left(\frac{4\pi^2p^2}{Nb^2}+\frac{N}{\tilde{R}^2}\right)^{-1}$', marker=dict(color='blue')))
 fig.add_trace(go.Scatter(x=X, y=MSROG_arctan_norm, mode='lines', name=r'$R_g^2=\frac{{\tilde{{R}}b}}{{\pi}}\left(\arctan\left(\frac{{\pi\tilde{{R}}}}{{b}}\right)-\arctan\left(\frac{{2\pi\tilde{{R}}}}{{Nb}}\right)\right)$', line=dict(dash='solid', color='blue', width=2)))
 
 fig.add_vline(x=char1, line_width=3, line_color="red", line=dict(dash='dash'))
@@ -64,16 +64,16 @@ fig.add_trace(go.Scatter(x=[None], y=[None], mode='lines',
                          line=dict(color="red", width=2, dash="solid"),
                          name=r'$\tilde{R}=\frac{Nb}{2\pi}$'))
 
-fig.add_trace(go.Scatter(x=regime0, y=MSROG_regime0_norm, mode='lines', name=r'$\frac{\tilde{R}^2}{b^2}$', line=dict(dash='dash', color='green', width=2)))
-fig.add_trace(go.Scatter(x=regime1, y=MSROG_regime1_norm, mode='lines', name=r'$\frac{1}{2}\frac{\tilde{R}}{b}$', line=dict(dash='solid', color='green', width=2)))
+fig.add_trace(go.Scatter(x=regime0, y=MSROG_regime0_norm, mode='lines', name=r'$R_g^2=\tilde{R}^2$', line=dict(dash='dash', color='green', width=2)))
+fig.add_trace(go.Scatter(x=regime1, y=MSROG_regime1_norm, mode='lines', name=r'$R_g^2=\frac{1}{2}\tilde{R}b$', line=dict(dash='solid', color='green', width=2)))
 fig.update_xaxes(type="log")
 fig.update_yaxes(type="log")
 fig.update_layout(
     title=fr'$N = {N}$',
     xaxis_title=r'$\frac{\pi \tilde{R}}{b}$',
     yaxis_title=r'$R_g^2\Big/b^2$',
-    xaxis=dict(tickformat='.0e'),
-    yaxis=dict(tickformat='.0e'),
+    xaxis=dict(tickformat='.0e', title_font=dict(size=20)),
+    yaxis=dict(tickformat='.0e', title_font=dict(size=20)),
     legend_font_size=16,
     title_font_size=20
 )
