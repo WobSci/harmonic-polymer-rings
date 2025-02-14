@@ -6,8 +6,8 @@ import plotly.graph_objects as go
 # Scalars
 b = 1 # no influence due to normalization of MSD by b^2
 N = 5000
-factor = 100*np.pi
-R = factor*b/np.pi
+factor = 100
+R = factor*b
 
 # Arrays
 t_norm = np.logspace(-1, 8, num=100) # t_norm = t/tau_s
@@ -98,7 +98,7 @@ fig.add_annotation(
 
 # Plot Properties
 fig.update_layout(
-    title=fr'$\tilde{{R}} = {factor:.3g} \frac{{b}}{{\pi}}, N = {N}$',
+    title=fr'$\tilde{{R}} = {factor:.3g} b, N = {N}$',
     xaxis_title=r'$t/\tau_s$',
     yaxis_title=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle \Big/ b^2$',
     xaxis=dict(tickformat='.0e', title_font=dict(size=20)),
