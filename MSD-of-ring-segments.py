@@ -5,8 +5,8 @@ import plotly.graph_objects as go
 ## Definitions
 # Scalars
 b = 1 # no influence due to normalization of MSD by b^2
-N = 5000
-factor = 100
+N = 1000
+factor = 10
 R = factor*b
 
 # Arrays
@@ -113,5 +113,7 @@ fig.show()
 
 ## Export
 export = np.column_stack((t_norm, MSD_norm))
-header = "t/tau_s,MSD/b^2"
+comment = f"R = {factor}b,N = {N}"
+column_titles = f"t/tau_s,MSD/b^2"
+header = f"{comment}\n{column_titles}"
 np.savetxt('export.csv', export, fmt='%.2e', delimiter=',', header=header, comments='')
