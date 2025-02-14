@@ -63,3 +63,10 @@ fig.update_layout(
     title_font_size=20
 )
 fig.show()
+
+## Export
+export = np.column_stack((N, MSROG_sum_norm))
+comment = f"R = {X}b,"
+column_titles = f"N,R_g^2/b^2 (eq.9 sum)"
+header = f"{comment}\n{column_titles}"
+np.savetxt('export.csv', export, fmt='%.2e', delimiter=',', header=header, comments='')
