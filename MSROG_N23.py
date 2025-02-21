@@ -2,8 +2,9 @@ import numpy as np
 import plotly.graph_objects as go
 
 # Definitions of Scalars
-b = 100 # no influence due to normalization of MSROG by b^2
-X = 5.8
+b = 11 # no influence due to normalization of MSROG by b^2
+X = 11/1.91
+X_round = np.round(X,2) # only for display in plot and csv export
 L = b/X
 N = 100
 beta = 3.25
@@ -37,18 +38,16 @@ MSROG_ring = np.array(MSROG_ring)
 MSROG_sum_norm = MSROG_sum / b**2
 MSROG_lin_norm = MSROG_lin / b**2
 MSROG_ring_norm = MSROG_ring / b**2
-#MSROG_char_norm = MSROG_char / b**2
 
 # Plot MSROG vs N
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=N, y=MSROG_sum_norm, mode='markers', name=r'$R_g^2$', marker=dict(color='blue')))
 fig.add_trace(go.Scatter(x=N, y=MSROG_lin_norm, mode='lines', name=r'$R_{g,lin}^2$', marker=dict(color='black')))
 fig.add_trace(go.Scatter(x=N, y=MSROG_ring_norm, mode='lines', name=r'$R_{g,ring}^2$', marker=dict(color='blue')))
-#fig.add_trace(go.Scatter(x=[N_char], y=[MSROG_char_norm], mode='markers', name=r'$\tilde{R}=\frac{N^2b^2}{4\pi^2}$', marker=dict(color='red')))
 fig.update_xaxes(type="log")
 fig.update_yaxes(type="log")
 fig.update_layout(
-    title=fr'$\beta = {beta} \text{{, }} \frac{{b}}{{L}} = {X}$',
+    title=fr'$\beta = {beta} \text{{, }} \frac{{b}}{{L}} \approx {X_round}$',
     xaxis_title=r'$N$',
     yaxis_title=r'$R_g^2\Big/b^2$',
     xaxis=dict(tickformat='.0e', title_font=dict(size=20)),
@@ -60,7 +59,7 @@ fig.show()
 
 ## Export
 export = np.column_stack((N, MSROG_sum_norm))
-comment = f"beta = {beta},b/L={X}"
+comment = f"beta = {beta},b/L = {X_round}"
 column_titles = f"N,R_g^2/b^2"
 header = f"{comment}\n{column_titles}"
 np.savetxt('export.csv', export, fmt='%.2e', delimiter=',', header=header, comments='')
