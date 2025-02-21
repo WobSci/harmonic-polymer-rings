@@ -46,10 +46,10 @@ MSROG_limit_norm = MSROG_limit / b**2
 
 # Plot MSROG vs N
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=N, y=MSROG_sum_norm, mode='markers', name=r'$R_g^2$', marker=dict(color='blue')))
-fig.add_trace(go.Scatter(x=N, y=MSROG_lin_norm, mode='lines', name=r'$R_{g,lin}^2$', marker=dict(color='black')))
-fig.add_trace(go.Scatter(x=N, y=MSROG_ring_norm, mode='lines', name=r'$R_{g,ring}^2$', marker=dict(color='blue')))
-fig.add_trace(go.Scatter(x=N, y=MSROG_limit_norm, mode='lines', name=r'$R_{g,limit}^2=\frac{1}{2}\beta^{1/2}N^{2/3}\left(\frac{L}{b}\right)^{2/3}b^2$', marker=dict(color='red')))
+fig.add_trace(go.Scatter(x=N, y=MSROG_sum_norm, mode='markers', name=r'$R_g^2=2\frac{Nb^2}{4\pi^2}\sum\limits_{p=1}^{N/2}\left(p^2+\frac{1}{4\pi^2}\frac{N^{2/3}}{\beta}\left(\frac{b}{L}\right)^{4/3}\right)^{-1}$', marker=dict(color='blue')))
+fig.add_trace(go.Scatter(x=N, y=MSROG_lin_norm, mode='lines', name=r'$R_{g,lin}^2=\frac{Nb^2}{6}$', marker=dict(color='black')))
+fig.add_trace(go.Scatter(x=N, y=MSROG_ring_norm, mode='lines', name=r'$R_{g,ring}^2=\frac{Nb^2}{12}$', marker=dict(color='blue')))
+fig.add_trace(go.Scatter(x=N, y=MSROG_limit_norm, mode='lines', name=r'$R_{g}^2\left(\frac{Nb}{2\pi}\gg\tilde{R}\gg\frac{b}{\pi}\right)\approx\frac{1}{2}\beta^{1/2}N^{2/3}\left(\frac{L}{b}\right)^{2/3}b^2$', marker=dict(color='red')))
 fig.update_xaxes(type="log")
 fig.update_yaxes(type="log")
 fig.update_layout(

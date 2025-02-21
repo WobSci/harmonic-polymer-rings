@@ -47,9 +47,9 @@ MSROG_char_norm = MSROG_char / b**2
 
 # Plot MSROG vs N
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=N, y=MSROG_sum_norm, mode='markers', name=r'$R_g^2$', marker=dict(color='blue')))
-fig.add_trace(go.Scatter(x=N, y=MSROG_lin_norm, mode='lines', name=r'$R_{g,lin}^2$', marker=dict(color='black')))
-fig.add_trace(go.Scatter(x=N, y=MSROG_ring_norm, mode='lines', name=r'$R_{g,ring}^2$', marker=dict(color='blue')))
+fig.add_trace(go.Scatter(x=N, y=MSROG_sum_norm, mode='markers', name=r'$R_g^2=2\sum\limits_{p=1}^{N/2}\left(\frac{4\pi^2p^2}{Nb^2}+\frac{N}{\tilde{R}^2}\right)^{-1}$', marker=dict(color='blue')))
+fig.add_trace(go.Scatter(x=N, y=MSROG_lin_norm, mode='lines', name=r'$R_{g,lin}^2=\frac{Nb^2}{6}$', marker=dict(color='black')))
+fig.add_trace(go.Scatter(x=N, y=MSROG_ring_norm, mode='lines', name=r'$R_{g,ring}^2=\frac{Nb^2}{12}$', marker=dict(color='blue')))
 fig.add_trace(go.Scatter(x=[N_char], y=[MSROG_char_norm], mode='markers', name=r'$\tilde{R}=\frac{N^2b^2}{4\pi^2}$', marker=dict(color='red')))
 fig.update_xaxes(type="log")
 fig.update_yaxes(type="log")
