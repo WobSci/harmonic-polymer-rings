@@ -1,19 +1,20 @@
 import numpy as np
 import plotly.graph_objects as go
 
-# Definitions of Scalars
+# Definitions of Scalars (User Choice)
 b = 11 # no influence due to normalization of MSROG by b^2
-X = 11/1.91
-X_round = np.round(X,2) # only for display in plot and csv export
-L = b/X
-N = 100
+X = 11/1.91 # ratio b/L
 beta = 3.25
 
-xlog_start = -1
-xlog_end = 4
+# Calculation of the packing length
+L = b/X
+
+# Specify the first and last N (logarithmic scale)
+Nlog_start = 1
+Nlog_end = 4
 
 # Definition of arrays
-N_log = np.logspace(1,4, 100)
+N_log = np.logspace(Nlog_start,Nlog_end, 100)
 N_int = np.round(N_log).astype(int)
 N = np.unique(N_int)
 MSROG_sum = []
@@ -45,6 +46,7 @@ MSROG_ring_norm = MSROG_ring / b**2
 MSROG_limit_norm = MSROG_limit / b**2
 
 # Plot MSROG vs N
+X_round = np.round(X,2) # only for display in plot and csv export
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=N, y=MSROG_sum_norm, mode='markers', name=r'$R_g^2=2\frac{Nb^2}{4\pi^2}\sum\limits_{p=1}^{N/2}\left(p^2+\frac{1}{4\pi^2}\frac{N^{2/3}}{\beta}\left(\frac{b}{L}\right)^{4/3}\right)^{-1}$', marker=dict(color='blue')))
 fig.add_trace(go.Scatter(x=N, y=MSROG_lin_norm, mode='lines', name=r'$R_{g,lin}^2=\frac{Nb^2}{6}$', marker=dict(color='black')))

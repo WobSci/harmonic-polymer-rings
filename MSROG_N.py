@@ -1,17 +1,19 @@
 import numpy as np
 import plotly.graph_objects as go
 
-# Definitions of Scalars
+# Definitions of Scalars (User Choice)
 b = 1 # no influence due to normalization of MSROG by b^2
-X = 100
-R = X*b
-N = 100
+X = 100 # define R as multiple (X) of b
 
-xlog_start = -1
-xlog_end = 4
+# Calculation of the radius of the potential
+R = X*b
+
+# Specify the first and last N (logarithmic scale)
+Nlog_start = 1
+Nlog_end = 4
 
 # Definition of arrays
-N_log = np.logspace(1,4, 100)
+N_log = np.logspace(Nlog_start,Nlog_end, 100)
 N_int = np.round(N_log).astype(int)
 N = np.unique(N_int)
 MSROG_sum = []

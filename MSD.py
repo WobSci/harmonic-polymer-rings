@@ -2,11 +2,13 @@ import numpy as np
 import plotly.graph_objects as go
 
 ## Definitions
-# Scalars
+# Scalars (User Choice)
 b = 1 # no influence due to normalization of MSD by b^2
-N = 1000
-factor = 10
-R = factor*b
+N = 1000 
+X = 10 # define R as multiple (X) of b
+
+# Calculation of the radius of the potential
+R = X*b
 
 # Arrays
 t_norm = np.logspace(-1, 8, num=100) # t_norm = t/tau_s
@@ -97,7 +99,7 @@ fig.add_annotation(
 
 # Plot Properties
 fig.update_layout(
-    title=fr'$\tilde{{R}} = {factor:.3g} b, N = {N}$',
+    title=fr'$\tilde{{R}} = {X:.3g} b, N = {N}$',
     xaxis_title=r'$t/\tau_s$',
     yaxis_title=r'$\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle \Big/ b^2$',
     xaxis=dict(tickformat='.0e', title_font=dict(size=20)),
@@ -112,7 +114,7 @@ fig.show()
 
 ## Export
 export = np.column_stack((t_norm, MSD_norm))
-comment = f"R = {factor}b,N = {N}"
+comment = f"R = {X}b,N = {N}"
 column_titles = f"t/tau_s,MSD/b^2"
 header = f"{comment}\n{column_titles}"
 np.savetxt('export.csv', export, fmt='%.2e', delimiter=',', header=header, comments='')

@@ -1,10 +1,11 @@
 import numpy as np
 import plotly.graph_objects as go
 
-# Definitions of Scalars
+# Definitions of Scalars (User Choice)
 b = 1 # no influence due to normalization of MSROG by b^2
 N = 100
 
+# Specify first and last point of piR/b
 xlog_start = -1
 xlog_end = 4
 
