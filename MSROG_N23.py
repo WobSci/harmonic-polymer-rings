@@ -19,6 +19,7 @@ N = np.unique(N_int)
 MSROG_sum = []
 MSROG_lin = []
 MSROG_ring = []
+MSROG_limit = []
 
 # Calculation of mean squared radius of gyration (MSROG)
 for i in N:
@@ -26,24 +27,29 @@ for i in N:
     temp1 = 2*b**2/(4*np.pi**2)*i*np.sum((p**2+i**(2/3)/(4*np.pi**2*beta)*(b/L)**(4/3))**(-1))
     temp2 = (i*b**2)/6
     temp3 = (i*b**2)/12
+    temp4 = beta**(1/2)/2*i**(2/3)*(L/b)**(2/3)*b**2
     MSROG_sum.append(temp1)
     MSROG_lin.append(temp2)
     MSROG_ring.append(temp3)
+    MSROG_limit.append(temp4)
 
 MSROG_sum = np.array(MSROG_sum)
 MSROG_lin = np.array(MSROG_lin)
 MSROG_ring = np.array(MSROG_ring)
+MSROG_limit = np.array(MSROG_limit)
 
 # Normalization
 MSROG_sum_norm = MSROG_sum / b**2
 MSROG_lin_norm = MSROG_lin / b**2
 MSROG_ring_norm = MSROG_ring / b**2
+MSROG_limit_norm = MSROG_limit / b**2
 
 # Plot MSROG vs N
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=N, y=MSROG_sum_norm, mode='markers', name=r'$R_g^2$', marker=dict(color='blue')))
 fig.add_trace(go.Scatter(x=N, y=MSROG_lin_norm, mode='lines', name=r'$R_{g,lin}^2$', marker=dict(color='black')))
 fig.add_trace(go.Scatter(x=N, y=MSROG_ring_norm, mode='lines', name=r'$R_{g,ring}^2$', marker=dict(color='blue')))
+fig.add_trace(go.Scatter(x=N, y=MSROG_limit_norm, mode='lines', name=r'$R_{g,limit}^2=\frac{1}{2}\beta^{1/2}N^{2/3}\left(\frac{L}{b}\right)^{2/3}b^2$', marker=dict(color='red')))
 fig.update_xaxes(type="log")
 fig.update_yaxes(type="log")
 fig.update_layout(
