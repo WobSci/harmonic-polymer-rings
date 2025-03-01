@@ -4,10 +4,12 @@ import plotly.graph_objects as go
 # Definitions of Scalars (User Choice)
 b = 11 # no influence due to normalization of MSROG by b^2
 X = 11/1.91 # ratio b/L
-beta = 3.25
+Rg = 49.5
+Rsf = 33.6
 
-# Calculation of the packing length
-L = b/X
+# Calculation of scalars
+L = b/X # packing lanth
+beta = (3/np.pi)**2*(np.pi/6)**(2/3)*(Rg/Rsf)**4 # dimensionless numerical coefficient
 
 # Specify the first and last N (logarithmic scale)
 Nlog_start = 1
