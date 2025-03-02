@@ -2,25 +2,25 @@ import numpy as np
 import plotly.graph_objects as go
 
 ## Definitions
-# Scalars (User Choice)
-b = 1 # no influence due to normalization of MSD by b^2
+# User Input
+b = 11 # length of Kuhn segment (Angstrom); no influence due to later normalization by b^2
 N = 1000 
 X = 10 # define R as multiple (X) of b
-
-# Calculation of the radius of the potential
-R = X*b
 
 # Arrays
 t_norm = np.logspace(-1, 8, num=100) # t_norm = t/tau_s
 p = np.linspace(1, np.floor(N/2), int(np.floor(N/2)))
+MSD = []
 
-## Calculation
+## Calculations
+# characteristic radius of the potential
+R = X*b
+
 # MSD for t_norm values
 A = 6/(3*np.pi**2) * b**2/N # MSD of center of mass
 B = ((4*np.pi**2*p**2)/(N*b**2)+N/R**2)**(-1)
 C = (2*p/N)**2 + (b/(np.pi*R))**2
 
-MSD = []
 for i in t_norm:
     temp = A*i + 4*np.sum(B*(1-np.e**(-C*i)))
     MSD.append(temp)
@@ -115,6 +115,6 @@ fig.show()
 ## Export
 export = np.column_stack((t_norm, MSD_norm))
 comment = f"R = {X}b,N = {N}"
-column_titles = f"t/tau_s,MSD/b^2"
+column_titles = f"t/tau_s,MSD/b²"
 header = f"{comment}\n{column_titles}"
 np.savetxt('export.csv', export, fmt='%.2e', delimiter=',', header=header, comments='')

@@ -1,31 +1,30 @@
 import numpy as np
 import plotly.graph_objects as go
 
-# Definitions of Scalars (User Choice)
-b = 1 # no influence due to normalization of MSROG by b^2
-N = 100
+## Definitions
+# User Input
+b = 11 # length of Kuhn segment (Angstrom); no influence due to later normalization by b^2
+N = 100 # number of Kuhn segments (= size of macromolecule)
 
-# Specify first and last point of piR/b
+# range of logarithmic x-axis
 xlog_start = -1
 xlog_end = 4
 
-# Definition of arrays
+# Arrays
 p = np.linspace(1, np.floor(N/2), int(np.floor(N/2)))
 X = np.logspace(xlog_start, xlog_end, num=100)
-
 MSROG_sum = []
 MSROG_arctan = []
+
+## Calculations
+# Arrays
 for i in X:
     temp1 = 2*np.sum(((4*np.pi**2*p**2)/(N*b**2)+N/(i*b/np.pi)**2)**(-1))
     temp2 = i*b**2/np.pi**2*(np.arctan(i)-np.arctan(2/N*i))
     MSROG_sum.append(temp1)
     MSROG_arctan.append(temp2)
 
-MSROG_sum = np.array(MSROG_sum)
-MSROG_arctan = np.array(MSROG_arctan)
-
-
-# Calculation of characteristic values of piR/b
+# characteristic values of piR/b
 char1 = 1
 char2 = N/2
 
@@ -42,6 +41,9 @@ for i in regime1:
     temp = b**2/(2*np.pi)*i
     MSROG_regime1.append(temp)
 
+# Processing
+MSROG_sum = np.array(MSROG_sum)
+MSROG_arctan = np.array(MSROG_arctan)
 MSROG_regime0 = np.array(MSROG_regime0)
 MSROG_regime1 = np.array(MSROG_regime1)
 
@@ -82,5 +84,5 @@ fig.show()
 
 ## Export
 export = np.column_stack((X, MSROG_sum_norm, MSROG_arctan_norm))
-header = "piR/b,R_g^2/b^2 (sum), R_g^2/b^2 (arctan)"
+header = "piR/b,MSROG/b² (sum), MSROG/b² (arctan)"
 np.savetxt('export.csv', export, fmt='%.2e', delimiter=',', header=header, comments='')
