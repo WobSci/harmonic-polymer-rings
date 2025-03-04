@@ -19,17 +19,17 @@ To explore different variables, change the values listed below `# User Input` st
 # Script Overview
 Each script exports its results into a csv file called `export.csv`.
 ## Mean Squared Displacement
-- [MSD_t.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSD_t.py) calculates and plots the time-evolution of the mean squared displacement. The number $N$ of Kuhn segments and the characteristic radius $\tilde{R}$ of the potential can be freely chosen.
+- [MSD_t.py](scripts/MSD_t.py) calculates and plots the time-evolution of the mean squared displacement. The number $N$ of Kuhn segments and the characteristic radius $\tilde{R}$ of the potential can be freely chosen.
 
 ## Mean Squared Radius of Gyration
-- [MSROG_R.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_R.py) calculates and plots the mean squared radius of gyration vs the characteristic radius $\tilde{R}$ of the potential for a fixed number $N$ of Kuhn segments. $N$ can be freely chosen.
-- [MSROG_N.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N.py) calculates and plots again the mean squared radius of gyration vs the number $N$ of Kuhn segments for a fixed characteristic radius $\tilde{R}$ of the potential. $\tilde{R}$ can be freely choosen as a multiple $X$ of the length $b$ of a Kuhn segment.
-- [MSROG_N_RpropN.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N_RpropN.py) calculates and plota the mean squared radius of gyration vs the number $N$ of Kuhn segments for a fixed characteristic radius $\tilde{R}$ of the potential. $N$ and $\tilde{R}$ are not longer independent from each other.
+- [MSROG_R.py](scripts/MSROG_R.py) calculates and plots the mean squared radius of gyration vs the characteristic radius $\tilde{R}$ of the potential for a fixed number $N$ of Kuhn segments. $N$ can be freely chosen.
+- [MSROG_N.py](scripts/MSROG_N.py) calculates and plots again the mean squared radius of gyration vs the number $N$ of Kuhn segments for a fixed characteristic radius $\tilde{R}$ of the potential. $\tilde{R}$ can be freely choosen as a multiple $X$ of the length $b$ of a Kuhn segment.
+- [MSROG_N_RpropN.py](scripts/MSROG_N_RpropN.py) calculates and plota the mean squared radius of gyration vs the number $N$ of Kuhn segments for a fixed characteristic radius $\tilde{R}$ of the potential. $N$ and $\tilde{R}$ are not longer independent from each other.
 The user has to provide the polymer charachteristic values for the length $b$ of the Kuhn segment, the packing length $L$, the (experimentally determined) radius of gyration $R_g$ and the radius $R_{sf}$ the polymer would have when contracted to a spherical globule. 
 
 # Equations
 ## Mean Squared Displacement
-The mean squared displacement in [MSD_t.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSD_t.py) is calculated according to
+The mean squared displacement in [MSD_t.py](hscripts/MSD_t.py) is calculated according to
 ```math
 \left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle = \frac{6}{3\pi^2}\frac{b^2}{N}\frac{t}{\tau_s}+4\sum\limits_{p=1}^{N/2}\left[\left(\frac{4\pi^2p^2}{Nb^2}+\frac{N}{\tilde{R}^2}\right)^{-1}\left(1-e^{-\left(\left(\frac{2p}{N}\right)^2+\left(\frac{b}{\pi \tilde{R}}\right)^2\right)\frac{t}{\tau_s}}\right)\right]
 ```
@@ -44,7 +44,7 @@ Additionally plotted are
   - $\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle\approx \frac{6}{3\pi^2}\frac{b^2}{N}\frac{t}{\tau_s}$
 
 ## Mean Squared Radius of Gyration
-The equations to calculate the mean squared radius of gyration in [MSROG_R.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_R.py) and [MSROG_N.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N.py) are
+The equations to calculate the mean squared radius of gyration in [MSROG_R.py](scripts/MSROG_R.py) and [MSROG_N.py](scripts/MSROG_N.py) are
 ```math
 R_g^2=2\sum\limits_{p=1}^{N/2}\left(\frac{4\pi^2p^2}{Nb^2}+\frac{N}{\tilde{R}^2}\right)^{-1}
 ```
@@ -52,7 +52,7 @@ and
 ```math
 R_g^2=\frac{{\tilde{{R}}b}}{{\pi}}\left(\arctan\left(\frac{{\pi\tilde{{R}}}}{{b}}\right)-\arctan\left(\frac{{2\pi\tilde{{R}}}}{{Nb}}\right)\right)
 ```
-In [MSROG_R.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_R.py) additionally plotted are
+In [MSROG_R.py](scripts/MSROG_R.py) additionally plotted are
 - the characteristic limits 
   - $\tilde{R}=\frac{b}{\pi}$
   - $\tilde{R}=\frac{Nb}{2\pi}$ 
@@ -60,13 +60,13 @@ In [MSROG_R.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scrip
   - $R_g^2\left(\tilde{R}\ll\frac{b}{\pi}\right)=\tilde{R}^2$
   - $R_g^2\left(\frac{b}{\pi}\ll\tilde{R}\ll\frac{Nb}{2\pi}\right)=\tilde{R}^2$
 
-In [MSROG_N.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N.py) additionally plotted are
+In [MSROG_N.py](scripts/MSROG_N.py) additionally plotted are
 - the mean squared radii of gyration of 
   - linear polymers $R_{g,lin}^2=\frac{Nb^2}{6}$
   - ideal ring polymers $R_{g,ring}^2=\frac{Nb^2}{12}$
-- the value of the mean squared radius of gyration when $\tilde{R}=\frac{Nb}{2\pi}$
+- the value of the mean squared radius of gyration for $\tilde{R}=\frac{Nb}{2\pi}$
 
-In [MSROG_N_RpropN.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N_RpropN.py) $\tilde{R}$ and $N$ are not longer independent from each other but related via
+In [MSROG_N_RpropN.py](scripts/MSROG_N_RpropN.py) $\tilde{R}$ and $N$ are not longer independent from each other but related via
 ```math
 \tilde{R}^2 = \beta N^{4/3}L^{4/3}b^{2/3}=\beta N^{4/3}\left(\frac{L}{b}\right)^{4/3}b^2
 ```
@@ -91,7 +91,7 @@ R_g^2 = \frac{1}{2}\beta^{1/2}N^{2/3}\left(\frac{L}{b}\right)^{2/3}b^2
 # Variables
 | Variable | Name (Comment) | Comment |
 | :------------- | :------------- | :------------- |
-| $b$  | length of a Kuhn segment | $b_{PEO}\approx 11\text{ }\mathring{A}$ [1], actual value only relevant in [MSROG_N_RpropN.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N_RpropN.py), due to normalization by $b^2$ in the scripts |
+| $b$  | length of a Kuhn segment | $b_{PEO}\approx 11\text{ }\mathring{A}$ [1], actual value only relevant in [MSROG_N_RpropN.py](scripts/MSROG_N_RpropN.py), due to normalization by $b^2$ in the scripts |
 | $\beta$  | numeric coefficient  |  proportional to the fraction of the globule's own segments density relative to the density of all segments at the globule's center of mass  |
 | $L$  | packing length  |  $L_{PEO}\approx 1.91\text{ }\mathring{A}$ [2]  |
 | $M$  | molecular mass  |    |
