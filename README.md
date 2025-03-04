@@ -53,11 +53,17 @@ and
 R_g^2=\frac{{\tilde{{R}}b}}{{\pi}}\left(\arctan\left(\frac{{\pi\tilde{{R}}}}{{b}}\right)-\arctan\left(\frac{{2\pi\tilde{{R}}}}{{Nb}}\right)\right)
 ```
 In [MSROG_R.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_R.py) additionally plotted are
-- the characteristic limits $\tilde{R}=\frac{b}{\pi}$ and $\tilde{R}=\frac{Nb}{2\pi}$ 
-- the approximations $R_g^2\left(\tilde{R}\ll\frac{b}{\pi}\right)=\tilde{R}^2$ and $R_g^2\left(\frac{b}{\pi}\ll\tilde{R}\ll\frac{Nb}{2\pi}\right)=\tilde{R}^2$
+- the characteristic limits 
+  - $\tilde{R}=\frac{b}{\pi}$
+  - $\tilde{R}=\frac{Nb}{2\pi}$ 
+- the approximations
+  - $R_g^2\left(\tilde{R}\ll\frac{b}{\pi}\right)=\tilde{R}^2$
+  - $R_g^2\left(\frac{b}{\pi}\ll\tilde{R}\ll\frac{Nb}{2\pi}\right)=\tilde{R}^2$
 
 In [MSROG_N.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N.py) additionally plotted are
-- the mean squared radii of gyration of linear $R_{g,lin}^2=\frac{Nb^2}{6}$ and ideal ring polymers $R_{g,ring}^2=\frac{Nb^2}{12}$.
+- the mean squared radii of gyration of 
+  - linear polymers $R_{g,lin}^2=\frac{Nb^2}{6}$
+  - ideal ring polymers $R_{g,ring}^2=\frac{Nb^2}{12}$
 - the value of the mean squared radius of gyration when $\tilde{R}=\frac{Nb}{2\pi}$
 
 In [MSROG_N_RpropN.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N_RpropN.py) $\tilde{R}$ and $N$ are not longer independent from each other but related via
@@ -77,11 +83,10 @@ The mean squared radius of gyration is then calculated according to
 ```math
 R_g^2=2\frac{Nb^2}{4\pi^2}\sum\limits_{p=1}^{N/2}\left(p^2+\frac{1}{4\pi^2}\frac{N^{2/3}}{\beta}\left(\frac{b}{L}\right)^{4/3}\right)^{-1}
 ```
-Additionally plotted are again the mean squared radii of gyration of linear and ideal ring polymers. Furthermore the $N$ dependence of the mean squared radius of gyration in case of $\left(\frac{b}{\pi}\ll\tilde{R}\ll\frac{Nb}{2\pi}\right)$ 
+Additionally plotted are again the mean squared radii of gyration of linear and ideal ring polymers. Furthermore the $N$ dependence of the mean squared radius of gyration is plotted for $\left(\frac{b}{\pi}\ll\tilde{R}\ll\frac{Nb}{2\pi}\right)$: 
 ```math
 R_g^2 = \frac{1}{2}\beta^{1/2}N^{2/3}\left(\frac{L}{b}\right)^{2/3}b^2
 ```
-is plotted.
 
 # Variables
 | Variable | Name (Comment) | Comment |
@@ -102,6 +107,9 @@ is plotted.
 | $\tau_s$  | segmental relaxation time  |    |
 
 [1] M. Rubinstein, R. H. Colby, Polymer Physics, Oxford University Press, 2003. Table 2.1, p. 53
+
 [2] L. J. Fetters, D. J. Lohse, D. Richter, T. A. Witten, A. Zirkel in Physical properties of Polymers Handbook (Ed. J. E. Mark), Springer 2007, Ch. 25. Table 25.5
+
 [3] M. Kruteva, M. Monkenbusch, J. Allgaier, O. Holderer, S. Pasini, I. Hoffmann, D. Richter, Phys. Rev. Lett. 2020, 125, 238004. DOI: [10.1103/PhysRevLett.125.238004](https://www.doi.org/10.1103/PhysRevLett.125.238004). Table 1
+
 [4] M. Kruteva, J. Allgaier, M. Monkenbusch, I. Hoffmann, D. Richter, J. Rheol. 2021, 65, 713–727. DOI: [10.1122/8.0000206](https://www.doi.org/10.1122/8.0000206). Table 1
