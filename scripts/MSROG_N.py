@@ -1,7 +1,7 @@
 import numpy as np
 import plotly.graph_objects as go
 
-# Definitions
+## Definitions
 # User Input
 b = 11 # length of Kuhn segment (Angstrom); no influence due to later normalization by b^2
 X = 100 # X=R/b, to later define R as multiple of b
