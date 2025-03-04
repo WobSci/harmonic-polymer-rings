@@ -74,15 +74,19 @@ is plotted.
 # Variables
 | Variable | Name (Comment) | Comment |
 | :------------- | :------------- | :------------- |
-| $b$  | length of a Kuhn segment | actual value only relevant in [MSROG_N_RpropN.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N_RpropN.py), due to normalization by $b^2$ in the scripts |
+| $b$  | length of a Kuhn segment | $b_{PEO}\approx 11\text{ }\mathring{A}$ [1], actual value only relevant in [MSROG_N_RpropN.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N_RpropN.py), due to normalization by $b^2$ in the scripts |
 | $\beta$  | numeric coefficient  |  proportional to the fraction of the globule's own segments density relative to the density of all segments at the globule's center of mass  |
-| $L$  | packing length  |    |
+| $L$  | packing length  |  $L_{PEO}\approx 1.91\text{ }\mathring{A}$ [2]  |
 | $M$  | molecular mass  |    |
 | $N$  | number of Kuhn segments | size of polymer |
 | $p$  | Rouse modes | runs from 1 to $N/2$  |
 | $\tilde{R}$  | characteristic radius of the potential | reflects the strength of the potential. The smaller $\tilde{R}$, the stronger the potential. Expressed in multiples X of $b$ |
 | $R_g^2$  | mean squared radius of gyration  |    |
-| $R_g$  | radius of gyration  |    |
-| $R_{sf}}$  | radius of a polymer contracted to a spherical globule  |    |
+| $R_g$  | radius of gyration  |  $R_{g,PEO}^{96000\text{ }g/mol}\approx 49.5\text{ }\mathring{A}$ [3,4]  |
+| $R_{sf}$  | radius of a polymer contracted to a spherical globule  |  $R_{sf,PEO}^{96000\text{ }g/mol}\approx 33.6\text{ }\mathring{A}$  |
 | $m_p$  | proton mass  |    |
-| $\rho$  | density of polymer melt  |  $\rho_{PEO}\approx 1.08\text{ }\frac{g}{cm^2}$  |
+| $\rho$  | density of polymer melt  |  $\rho_{PEO}\approx 1.08\text{ }\frac{g}{cm^2}$ [2] |
+[1] M. Rubinstein, R. H. Colby, Polymer Physics, Oxford University Press, 2003. Table 2.1, p. 53
+[2] L. J. Fetters, D. J. Lohse, D. Richter, T. A. Witten, A. Zirkel in Physical properties of Polymers Handbook (Ed. J. E. Mark), Springer 2007, Ch. 25. Table 25.5
+[3] M. Kruteva, M. Monkenbusch, J. Allgaier, O. Holderer, S. Pasini, I. Hoffmann, D. Richter, Phys. Rev. Lett. 2020, 125, 238004. DOI: [10.1103/PhysRevLett.125.238004](https://www.doi.org/10.1103/PhysRevLett.125.238004). Table 1
+[4] M. Kruteva, J. Allgaier, M. Monkenbusch, I. Hoffmann, D. Richter, J. Rheol. 2021, 65, 713–727. DOI: [10.1122/8.0000206](https://www.doi.org/10.1122/8.0000206). Table 1
