@@ -17,6 +17,7 @@ The Python scripts can be executed in the browser using GitHub Codespaces.
 To explore different variables, change the values listed below `# User Input` starting at line 5 in the scripts.
 
 # Script Overview
+Each script exports its results into a csv file called `export.csv`.
 ## Mean Squared Displacement
 - [MSD_t.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSD_t.py) calculates and plots the time-evolution of the mean squared displacement. The number $N$ of Kuhn segments and the characteristic radius $\tilde{R}$ of the potential can be freely chosen.
 
@@ -24,7 +25,7 @@ To explore different variables, change the values listed below `# User Input` st
 - [MSROG_R.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_R.py) calculates and plots the mean squared radius of gyration vs the characteristic radius $\tilde{R}$ of the potential for a fixed number $N$ of Kuhn segments. $N$ can be freely chosen.
 - [MSROG_N.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N.py) calculates and plots again the mean squared radius of gyration vs the number $N$ of Kuhn segments for a fixed characteristic radius $\tilde{R}$ of the potential. $\tilde{R}$ can be freely choosen as a multiple $X$ of the length $b$ of a Kuhn segment.
 - [MSROG_N_RpropN.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N_RpropN.py) calculates and plota the mean squared radius of gyration vs the number $N$ of Kuhn segments for a fixed characteristic radius $\tilde{R}$ of the potential. $N$ and $\tilde{R}$ are not longer independent from each other.
-The user has to provide the polymer charachteristic values for the length $b$ of the Kuhn segment, the packing length $L$, the radius of gyration $R_g$ and the radius $R_{sf}$ the polymer would have when contracted to a spherical globule. 
+The user has to provide the polymer charachteristic values for the length $b$ of the Kuhn segment, the packing length $L$, the (experimentally determined) radius of gyration $R_g$ and the radius $R_{sf}$ the polymer would have when contracted to a spherical globule. 
 
 # Equations
 ## Mean Squared Displacement
@@ -59,13 +60,29 @@ The radius of the polymer contracted to a spherical globule can be estimated via
 ```math
 R_{sf} = \left[\frac{3}{4\pi}\frac{m_p}{\rho}M\right]^{1/3}
 ```
-with the proton mass $m_p$ and the density of the polymer melt $\rho$.
+with the proton mass $m_p$the density of the polymer melt $\rho$ and the polymers molecular mass $M$.
 The mean squared radius of gyration is then calculated according to
 ```math
 R_g^2=2\frac{Nb^2}{4\pi^2}\sum\limits_{p=1}^{N/2}\left(p^2+\frac{1}{4\pi^2}\frac{N^{2/3}}{\beta}\left(\frac{b}{L}\right)^{4/3}\right)^{-1}
 ```
-Additionally plotted are again the mean squared radii of gyration of linear adn ideal ring polymers. Furthermore the $N$ dependence of the mean squared radius of gyration in case of $\left(\frac{b}{\pi}\ll\tilde{R}\ll\frac{Nb}{2\pi}\right)$ 
+Additionally plotted are again the mean squared radii of gyration of linear and ideal ring polymers. Furthermore the $N$ dependence of the mean squared radius of gyration in case of $\left(\frac{b}{\pi}\ll\tilde{R}\ll\frac{Nb}{2\pi}\right)$ 
 ```math
 R_g^2 = \frac{1}{2}\beta^{1/2}N^{2/3}\left(\frac{L}{b}\right)^{2/3}b^2
 ```
 is plotted.
+
+# Variables
+| Variable | Name (Comment) | Comment |
+| :------------- | :------------- | :------------- |
+| $b$  | length of a Kuhn segment | actual value only relevant in [MSROG_N_RpropN.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N_RpropN.py), due to normalization by $b^2$ in the scripts |
+| $\beta$  | numeric coefficient  |  proportional to the fraction of the globule's own segments density relative to the density of all segments at the globule's center of mass  |
+| $L$  | packing length  |    |
+| $M$  | molecular mass  |    |
+| $N$  | number of Kuhn segments | size of polymer |
+| $p$  | Rouse modes | runs from 1 to $N/2$  |
+| $\tilde{R}$  | characteristic radius of the potential | reflects the strength of the potential. The smaller $\tilde{R}$, the stronger the potential. Expressed in multiples X of $b$ |
+| $R_g^2$  | mean squared radius of gyration  |    |
+| $R_g$  | radius of gyration  |    |
+| $R_{sf}}$  | radius of a polymer contracted to a spherical globule  |    |
+| $m_p$  | proton mass  |    |
+| $\rho$  | density of polymer melt  |  $\rho_{PEO}\approx 1.08\text{ }\frac{g}{cm^2}$  |
