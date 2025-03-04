@@ -29,7 +29,19 @@ The user has to provide the polymer charachteristic values for the length $b$ of
 
 # Equations
 ## Mean Squared Displacement
-
+The mean squared displacement in [MSD_t.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSD_t.py) is calculated according to
+```math
+\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle = \frac{6}{3\pi^2}\frac{b^2}{N}\frac{t}{\tau_s}+4\sum\limits_{p=1}^{N/2}\left[\left(\frac{4\pi^2p^2}{Nb^2}+\frac{N}{\tilde{R}^2}\right)^{-1}\left(1-e^{-\left(\left(\frac{2p}{N}\right)^2+\left(\frac{b}{\pi \tilde{R}}\right)^2\right)\frac{t}{\tau_s}}\right)\right]
+```
+Additionally plotted are
+- the characteristic limits 
+  - $\frac{t}{\tau_s}=1$
+  - $\frac{t}{\tau_s}=4\pi^2\frac{R_g^4}{b^4}$
+  - $\frac{t}{\tau_s}=\pi^2\frac{R_g^2N}{b^2}$
+- the approximations between the characteristic limits
+  - $\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle\approx \frac{2b^2}{\pi^{3/2}}\left(\frac{t}{\tau_s}\right)^{1/2}$
+  - $\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle\approx 2R_g^2$
+  - $\left\langle\left(\vec{r}_n\left(t\right)-\vec{r}_n\left(0\right)\right)^2\right\rangle\approx \frac{6}{3\pi^2}\frac{b^2}{N}\frac{t}{\tau_s}$
 
 ## Mean Squared Radius of Gyration
 The equations to calculate the mean squared radius of gyration in [MSROG_R.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_R.py) and [MSROG_N.py](https://github.com/WobSci/harmonic-polymer-rings/blob/main/scripts/MSROG_N.py) are
@@ -78,14 +90,17 @@ is plotted.
 | $\beta$  | numeric coefficient  |  proportional to the fraction of the globule's own segments density relative to the density of all segments at the globule's center of mass  |
 | $L$  | packing length  |  $L_{PEO}\approx 1.91\text{ }\mathring{A}$ [2]  |
 | $M$  | molecular mass  |    |
+| $m_p$  | proton mass  |    |
 | $N$  | number of Kuhn segments | size of polymer |
 | $p$  | Rouse modes | runs from 1 to $N/2$  |
 | $\tilde{R}$  | characteristic radius of the potential | reflects the strength of the potential. The smaller $\tilde{R}$, the stronger the potential. Expressed in multiples X of $b$ |
 | $R_g^2$  | mean squared radius of gyration  |    |
 | $R_g$  | radius of gyration  |  $R_{g,PEO}^{96000\text{ }g/mol}\approx 49.5\text{ }\mathring{A}$ [3,4]  |
 | $R_{sf}$  | radius of a polymer contracted to a spherical globule  |  $R_{sf,PEO}^{96000\text{ }g/mol}\approx 33.6\text{ }\mathring{A}$  |
-| $m_p$  | proton mass  |    |
 | $\rho$  | density of polymer melt  |  $\rho_{PEO}\approx 1.08\text{ }\frac{g}{cm^2}$ [2] |
+| $t$  | time  |    |
+| $\tau_s$  | segmental relaxation time  |    |
+
 [1] M. Rubinstein, R. H. Colby, Polymer Physics, Oxford University Press, 2003. Table 2.1, p. 53
 [2] L. J. Fetters, D. J. Lohse, D. Richter, T. A. Witten, A. Zirkel in Physical properties of Polymers Handbook (Ed. J. E. Mark), Springer 2007, Ch. 25. Table 25.5
 [3] M. Kruteva, M. Monkenbusch, J. Allgaier, O. Holderer, S. Pasini, I. Hoffmann, D. Richter, Phys. Rev. Lett. 2020, 125, 238004. DOI: [10.1103/PhysRevLett.125.238004](https://www.doi.org/10.1103/PhysRevLett.125.238004). Table 1
