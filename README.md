@@ -6,7 +6,7 @@ A snapshot of this repository at the status of the article publication is availa
 # Getting Started
 The Python scripts can be executed in the browser using GitHub Codespaces. 
 - Click the green `<> Code` button at the top right of the repository
-- Select the `Codespaces` tab
+- Select the `Codespaces` tab (you have to be logged in to see it)
 - Click `Create codespace on main`
 - The codespace uses [VS Code](https://code.visualstudio.com/docs) as editor
 - You may be asked/need to install the VS Code Python extension
