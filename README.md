@@ -24,9 +24,9 @@ Each script exports its results into a csv file called `export.csv`.
 
 ## Mean Squared Radius of Gyration
 - [MSROG_R.py](scripts/MSROG_R.py) calculates and plots the mean squared radius of gyration vs the characteristic radius $\tilde{R}$ of the potential for a fixed number $N$ of Kuhn segments. $N$ can be freely chosen.
-- [MSROG_N.py](scripts/MSROG_N.py) calculates and plots again the mean squared radius of gyration vs the number $N$ of Kuhn segments for a fixed characteristic radius $\tilde{R}$ of the potential. $\tilde{R}$ can be freely choosen as a multiple $X$ of the length $b$ of a Kuhn segment.
-- [MSROG_N_RpropN.py](scripts/MSROG_N_RpropN.py) calculates and plota the mean squared radius of gyration vs the number $N$ of Kuhn segments for a fixed characteristic radius $\tilde{R}$ of the potential. $N$ and $\tilde{R}$ are not longer independent from each other.
-The user has to provide the polymer charachteristic values for the length $b$ of the Kuhn segment, the packing length $L$, the (experimentally determined) radius of gyration $R_g$ and the radius $R_{sf}$ the polymer would have when contracted to a spherical globule. 
+- [MSROG_N.py](scripts/MSROG_N.py) calculates and plots again the mean squared radius of gyration vs the number $N$ of Kuhn segments for a fixed characteristic radius $\tilde{R}$ of the potential. $\tilde{R}$ can be freely chosen as a multiple $X$ of the length $b$ of a Kuhn segment.
+- [MSROG_N_RpropN.py](scripts/MSROG_N_RpropN.py) calculates and plots the mean squared radius of gyration vs the number $N$ of Kuhn segments for a fixed characteristic radius $\tilde{R}$ of the potential. $N$ and $\tilde{R}$ are no longer independent of each other.
+The user has to provide the polymer characteristic values for the length $b$ of the Kuhn segment, the packing length $L$, the (experimentally determined) radius of gyration $R_g$ and the radius $R_{sf}$ the polymer would have when contracted to a spherical globule. 
 
 # Equations
 ## Mean Squared Displacement
