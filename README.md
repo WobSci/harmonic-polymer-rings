@@ -1,5 +1,6 @@
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.14956317.svg)](10.5281/zenodo.14956317)  
 This repository contains the Python scripts used to visualize the mean squared displacement and radius of gyration of polymer rings based on the Rouse model modified by a spherical attractive harmonic potential as presented in the [Publication].
-A snapshot of this repository at the status of the article publication is available on Zenodo, DOI: [10.5281/zenodo.14956318](https://doi.org/10.5281/zenodo.14956318). 
+A snapshot of this repository at the status of the article publication is available on Zenodo. 
 - Language: [Python](https://www.python.org/) (3.13.1)
 - Packages: [NumPy](https://numpy.org/) (2.2.3), [Plotly](https://plotly.com/python/) (6.0.0)
 
