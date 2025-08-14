@@ -28,6 +28,9 @@ Each script exports its results into a csv file called `export.csv`.
 - [MSROG_N_RpropN.py](scripts/MSROG_N_RpropN.py) calculates and plots the mean squared radius of gyration vs the number $N$ of Kuhn segments for a fixed characteristic radius $\tilde{R}$ of the potential. $N$ and $\tilde{R}$ are no longer independent of each other.
 The user has to provide the polymer characteristic values for the length $b$ of the Kuhn segment, the packing length $L$, the (experimentally determined) radius of gyration $R_g$ and the radius $R_{sf}$ the polymer would have when contracted to a spherical globule. 
 
+## Rouse Relaxation Time
+- [TAU_p.py](scripts/TAU_p.py) calculates the Rouse relaxation time $\tau_p$ of polymer rings with an attractive harmonic potential and plots it normalized by the segmental relaxation time $\tau_s$ vs the Rouse mode $p=1...N/2$ normalized by the number of Kuhn segments $N$. The user can change the characteristic radius $\tilde{R}$, i.e. the strength, of the harmonic potential as multiples of the length $b$ of the Kuhn segment.
+
 # Equations
 ## Mean Squared Displacement
 The mean squared displacement in [MSD_t.py](hscripts/MSD_t.py) is calculated according to
@@ -88,6 +91,13 @@ Additionally plotted are again the mean squared radii of gyration of linear and 
 ```math
 R_g^2 = \frac{1}{2}\beta^{1/2}N^{2/3}\left(\frac{L}{b}\right)^{2/3}b^2
 ```
+
+## Rouse Relaxation Time
+The mode dependence of the Rouse relaxation time is plotted by [TAU_p.py](scripts/TAU_p.py) in form of the ratio of the segmental and the Rouse relaxation time vs. the mode number p divided by N, since $p=1...N/2$ according to
+```math
+\frac{\tau_s}{\tau_p}=4\left[\left(\frac{p}{N}\right)^2+\frac{b^2}{4\pi^2\tilde{R}^2}\right]
+```
+Additionally, the ratio $\frac{p}{N}=\frac{b}{2\pi\tilde{R}}$ below which the mode-independent contribution from the attractive harmonic potential is dominant, is indicated by a red dashed line in the resulting plot.
 
 # Variables
 | Variable | Name (Comment) | Comment |
